@@ -4,9 +4,11 @@ function setup() {
   makePageForEpisodes(allEpisodes);
 }
 
+
 function makePageForEpisodes(episodeList) {
 
   const ul = document.getElementById("episodes-list");
+
   for (const episode of episodeList){
     //creating elements li,p,img,h3
     const li = document.createElement('li');
@@ -26,9 +28,15 @@ function makePageForEpisodes(episodeList) {
 
     ul.appendChild(li)
 
-  }
+  const searchInput = document.querySelector('.searchTerm')
+  searchInput.addEventListener('input', e => {
+  const value = e.target.value.toLowerCase()
+  
+  const isVisible = episode.name.toLowerCase().includes(value) || episode.summary.toLowerCase().includes(value) 
+    
+  li.classList.toggle('hide', !isVisible)
+  })
+
 }
-
-
-
+}
 window.onload = setup;
