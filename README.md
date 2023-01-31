@@ -1,3 +1,7 @@
+live github https://tiritaki.github.io/tv-show-dom-project/
+live netlify https://cyf-tiritaki-tv.netlify.app/
+
+
 # TV Show DOM Project
 
 A starting point for CYF's TV show DOM project
