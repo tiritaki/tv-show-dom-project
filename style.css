@@ -70,10 +70,18 @@ body{
 }
 
 /*Resize the wrap to see the search bar change!*/
-.wrap{
-  width: 30%;
-  margin: 20px auto;
+.selector-search-display-wrapper{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px 0px;
+  align-items: center;
 }
+
+.search-wrap{
+  width: 30%;
+}
+
 
 .hide {
   display: none;

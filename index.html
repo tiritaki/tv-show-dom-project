@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TV Show Project | Oleh (tiritaki)</title>
-    <link href="style.css" rel="stylesheet" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <script src="https://kit.fontawesome.com/a857e5a933.js" crossorigin="anonymous"></script>
-  </head>
 
-  <body>
-    <h1>Game of Thrones</h1>
-    <div class="wrap">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TV Show Project | Oleh (tiritaki)</title>
+  <link href="style.css" rel="stylesheet" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <script src="https://kit.fontawesome.com/a857e5a933.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1>Game of Thrones</h1>
+  <div class="selector-search-display-wrapper">
+    <div class="selector-wrap">
+      <div id="selector">Selector</div>
+    </div>
+    <div class="search-wrap">
       <div class="search">
-         <input type="text" class="searchTerm" placeholder="What are you looking for?">
-         <button type="submit" class="searchButton">
-           <i class="fa fa-search"></i>
+        <input type="text" class="searchTerm" placeholder="What are you looking for?">
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
         </button>
       </div>
-   </div>
-    <ul id="episodes-list"></ul>
+    </div>
+    <div class="display-wrap">
+      <div id="display"></div>
+    </div>
+  </div>
 
-    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-    <script src="episodes.js"></script>
+  <ul id="episodes-list"></ul>
 
-    <!-- Loads YOUR javascript code -->
-    <script src="script.js"></script>
-  </body>
+  <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
+  <script src="episodes.js"></script>
+
+  <!-- Loads YOUR javascript code -->
+  <script src="script.js"></script>
+</body>
+
 </html>
