@@ -6,7 +6,7 @@ function setup() {
 
 function makePageForEpisodes(episodeList) {
   const ul = document.getElementById("episodes-list");
- 
+  let option = "";
 
   for (const episode of episodeList) {
     //creating elements li,p,img,h3
@@ -29,22 +29,33 @@ function makePageForEpisodes(episodeList) {
 
     ul.appendChild(li);
 
+    //select bar functionality
+    option += `<option value = '${episode.name}'>S${episode.season.toString().padStart(2, "0")}E${episode.number.toString().padStart(2, "0")} - ${episode.name}</option>`;
+    document.getElementById("selector").innerHTML = option;
+    const selectedEpisode = document.getElementById("selector");
+    selectedEpisode.addEventListener('change', (event)=>{
+      const val = event.target.value
+      const isVisible = episode.name.includes(val);
+      li.classList.toggle("hide", !isVisible);
+    })
+
     //search bar functionality
     const searchInput = document.querySelector(".searchTerm");
     searchInput.addEventListener("input", (e) => {
       const value = e.target.value.toLowerCase();
 
-      const isVisible =
-        episode.name.toLowerCase().includes(value) ||
-        episode.summary.toLowerCase().includes(value);
+      const isVisible = episode.name.toLowerCase().includes(value) || episode.summary.toLowerCase().includes(value);
       li.classList.toggle("hide", !isVisible);
-      if(isVisible){li.setAttribute('id', 'visible');}
+      // if (isVisible) {
+      //   li.setAttribute("id", "visible");
+      // }
     });
-          //episodes display
-          const rootElem = document.getElementById("display");
-          const episodesQuantity = document.querySelectorAll('#visible');
-          console.log(episodesQuantity)
-          rootElem.textContent = `Got / ${episodeList.length} episode(s)`;
+    //episodes quantity display 
+    const rootElem = document.getElementById("display");
+    const episodesQuantity = document.querySelectorAll("#visible");
+    // console.log(episodesQuantity);
+    rootElem.textContent = `Got / ${episodeList.length} episode(s)`;
   }
+
 }
 window.onload = setup;

@@ -82,6 +82,14 @@ body{
   width: 30%;
 }
 
+.selector-wrap {
+  width: 25%;
+  font-size: 1rem;
+  padding: 5px;
+  box-shadow: 10px 5px 5px grey;
+  background-color: #c4ecf1;
+  border: none;
+}
 
 .hide {
   display: none;
