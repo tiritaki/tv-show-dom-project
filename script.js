@@ -9,6 +9,7 @@ function makePageForEpisodes(episodeList) {
   let option = "";
 
   for (const episode of episodeList) {
+    let count = 0;
     //creating elements li,p,img,h3
     const li = document.createElement("li");
     li.classList.add("card");
@@ -38,6 +39,7 @@ function makePageForEpisodes(episodeList) {
       const isVisible = episode.name.includes(val);
       li.classList.toggle("hide", !isVisible);
     })
+    
 
     //search bar functionality
     const searchInput = document.querySelector(".searchTerm");
@@ -46,16 +48,21 @@ function makePageForEpisodes(episodeList) {
 
       const isVisible = episode.name.toLowerCase().includes(value) || episode.summary.toLowerCase().includes(value);
       li.classList.toggle("hide", !isVisible);
-      // if (isVisible) {
-      //   li.setAttribute("id", "visible");
-      // }
-    });
-    //episodes quantity display 
-    const rootElem = document.getElementById("display");
-    const episodesQuantity = document.querySelectorAll("#visible");
-    // console.log(episodesQuantity);
-    rootElem.textContent = `Got / ${episodeList.length} episode(s)`;
-  }
+      const licard = document.querySelectorAll('.card')
+      const hiddenCards = document.querySelectorAll('.hide')
 
+      let arrayOfHiddenCards = Array.from(hiddenCards);
+      let arrayOfCards = Array.from(licard);
+      
+      const rootElem = document.getElementById("display");
+      rootElem.textContent = `Got ${arrayOfCards.length-arrayOfHiddenCards.length}/ ${episodeList.length} episode(s)`;
+    });
+    
+    //episodes quantity display 
+    
+    const rootElem = document.getElementById("display");
+    rootElem.textContent = `Got ${episodeList.length} / ${episodeList.length} episode(s)`;
+  }
+  
 }
 window.onload = setup;
