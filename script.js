@@ -50,16 +50,14 @@ function makePageForEpisodes(episodeList) {
       li.classList.toggle("hide", !isVisible);
       const licard = document.querySelectorAll('.card')
       const hiddenCards = document.querySelectorAll('.hide')
-
-      let arrayOfHiddenCards = Array.from(hiddenCards);
-      let arrayOfCards = Array.from(licard);
       
+      //episodes quantity display 
+      let arrayOfHiddenCards = Array.from(hiddenCards);
       const rootElem = document.getElementById("display");
-      rootElem.textContent = `Got ${arrayOfCards.length-arrayOfHiddenCards.length}/ ${episodeList.length} episode(s)`;
+      rootElem.textContent = `Got ${episodeList.length-arrayOfHiddenCards.length} / ${episodeList.length} episode(s)`;
     });
     
     //episodes quantity display 
-    
     const rootElem = document.getElementById("display");
     rootElem.textContent = `Got ${episodeList.length} / ${episodeList.length} episode(s)`;
   }
