@@ -1,4 +1,5 @@
 //You can edit ALL of the code here
+
 function setup() {
   const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
@@ -8,8 +9,11 @@ function makePageForEpisodes(episodeList) {
   const ul = document.getElementById("episodes-list");
   let option = "";
 
+  //episodes quantity display 
+  const rootElem = document.getElementById("display");
+  rootElem.textContent = `Got ${episodeList.length} / ${episodeList.length} episode(s)`;
+
   for (const episode of episodeList) {
-    let count = 0;
     //creating elements li,p,img,h3
     const li = document.createElement("li");
     li.classList.add("card");
@@ -18,16 +22,13 @@ function makePageForEpisodes(episodeList) {
     const img = document.createElement("img");
     const para = document.createElement("p");
 
-    name.innerText = `${episode.name} - S${episode.season
-      .toString()
-      .padStart(2, "0")}E${episode.number.toString().padStart(2, "0")}`;
+    name.innerText = `${episode.name} - S${episode.season.toString().padStart(2, "0")}E${episode.number.toString().padStart(2, "0")}`;
     img.src = episode.image.medium;
     para.innerHTML = episode.summary;
 
     li.appendChild(name);
     li.appendChild(img);
     li.appendChild(para);
-
     ul.appendChild(li);
 
     //select bar functionality
@@ -40,27 +41,19 @@ function makePageForEpisodes(episodeList) {
       li.classList.toggle("hide", !isVisible);
     })
     
-
     //search bar functionality
     const searchInput = document.querySelector(".searchTerm");
     searchInput.addEventListener("input", (e) => {
       const value = e.target.value.toLowerCase();
-
       const isVisible = episode.name.toLowerCase().includes(value) || episode.summary.toLowerCase().includes(value);
       li.classList.toggle("hide", !isVisible);
-      const licard = document.querySelectorAll('.card')
-      const hiddenCards = document.querySelectorAll('.hide')
       
       //episodes quantity display 
+      const hiddenCards = document.querySelectorAll('.hide')
       let arrayOfHiddenCards = Array.from(hiddenCards);
       const rootElem = document.getElementById("display");
       rootElem.textContent = `Got ${episodeList.length-arrayOfHiddenCards.length} / ${episodeList.length} episode(s)`;
     });
-    
-    //episodes quantity display 
-    const rootElem = document.getElementById("display");
-    rootElem.textContent = `Got ${episodeList.length} / ${episodeList.length} episode(s)`;
   }
-  
 }
 window.onload = setup;
