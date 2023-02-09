@@ -1,8 +1,14 @@
 //You can edit ALL of the code here
+let allEpisodes = []
 
 function setup() {
-  const allEpisodes = getAllEpisodes();
-  makePageForEpisodes(allEpisodes);
+  // const allEpisodes = getAllEpisodes();
+  fetch('https://api.tvmaze.com/shows/82/episodes')
+  .then((res) => res.json())
+  .then((data) => {
+    allEpisodes = data
+    makePageForEpisodes(allEpisodes);
+  })
 }
 
 function makePageForEpisodes(episodeList) {
