@@ -1,18 +1,32 @@
-//You can edit ALL of the code here
+
 let allEpisodes = []
+let showId = '';
 
 function setup() {
-  // const allEpisodes = getAllEpisodes();
-  fetch('https://api.tvmaze.com/shows/82/episodes')
-  .then((res) => res.json())
-  .then((data) => {
-    allEpisodes = data
-    makePageForEpisodes(allEpisodes);
+  // allShows lis
+  const allShows = getAllShows();
+  let opt = "";
+  for (let show of allShows){
+    opt += `<option value = '${show.id}'>${show.name}</option>`;
+    document.getElementById("selector-show").innerHTML = opt;
+  }
+  const selectedShow = document.getElementById("selector-show");
+  selectedShow.addEventListener('change', (event)=>{
+    const val = event.target.value
+    showId = val.toString()
+      // allEpisodes fetch
+    fetch(`https://api.tvmaze.com/shows/${showId}/episodes`)
+    .then((res) => res.json())
+    .then((data) => {
+      allEpisodes = data
+      makePageForEpisodes(allEpisodes);
+    })
   })
 }
 
 function makePageForEpisodes(episodeList) {
   const ul = document.getElementById("episodes-list");
+  ul.innerHTML = '';
   let option = "";
 
   //episodes quantity display 
@@ -37,10 +51,10 @@ function makePageForEpisodes(episodeList) {
     li.appendChild(para);
     ul.appendChild(li);
 
-    //select bar functionality
+    //select episode bar functionality
     option += `<option value = '${episode.name}'>S${episode.season.toString().padStart(2, "0")}E${episode.number.toString().padStart(2, "0")} - ${episode.name}</option>`;
-    document.getElementById("selector").innerHTML = option;
-    const selectedEpisode = document.getElementById("selector");
+    document.getElementById("selector-episode").innerHTML = option;
+    const selectedEpisode = document.getElementById("selector-episode");
     selectedEpisode.addEventListener('change', (event)=>{
       const val = event.target.value
       const isVisible = episode.name.includes(val);
@@ -63,3 +77,4 @@ function makePageForEpisodes(episodeList) {
   }
 }
 window.onload = setup;
+

@@ -82,8 +82,17 @@ body{
   width: 30%;
 }
 
-.selector-wrap {
-  width: 25%;
+.selector-episode-wrap {
+  width: 20%;
+  font-size: 1rem;
+  padding: 5px;
+  box-shadow: 10px 5px 5px grey;
+  background-color: #c4ecf1;
+  border: none;
+}
+
+.selector-show-wrap {
+  width: 20%;
   font-size: 1rem;
   padding: 5px;
   box-shadow: 10px 5px 5px grey;
