@@ -1,5 +1,5 @@
 
-let allEpisodes = []
+// let allEpisodes = []
 let showId = '';
 
 function setup() {
@@ -18,8 +18,8 @@ function setup() {
     fetch(`https://api.tvmaze.com/shows/${showId}/episodes`)
     .then((res) => res.json())
     .then((data) => {
-      allEpisodes = data
-      makePageForEpisodes(allEpisodes);
+      // allEpisodes = data
+      makePageForEpisodes(data);
     })
   })
 }
