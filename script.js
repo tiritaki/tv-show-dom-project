@@ -1,9 +1,5 @@
-
-// let allEpisodes = []
-let showId = '';
-
 function setup() {
-  // allShows lis
+  let showId = '';
   const allShows = getAllShows();
   let opt = "";
   for (let show of allShows){
